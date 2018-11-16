@@ -133,3 +133,5 @@ ac_mamager = ACManager(permissions,
     roles_loader=roles_loader, permissions_loader=permissions_loader)
 ac_manager.init_app(app)
 ```
+
+[![Analytics](https://ga-beacon.appspot.com/UA-129310551-2/index)](https://github.com/gawainguo/Flask-AC)

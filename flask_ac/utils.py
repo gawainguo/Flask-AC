@@ -30,7 +30,6 @@ def permissions_required(permissions=[], failed_callback=None):
         permissions - list, Allow access roles
         failed_callback - func, handler when access failed
     """
-
     def _permissions_required(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
