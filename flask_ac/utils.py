@@ -17,7 +17,12 @@ def roles_required(roles=[], failed_callback=None):
             ac_manager = current_app.ac_manager
             if ac_manager.allow_access(roles=roles):
                 return func(*args, **kwargs)
-            return failed_callback()
+
+            if ac_manager.default_error_handler:
+                return ac_manager.default_error_handler()
+
+            if failed_callback:
+                return failed_callback()
         return wrapper
     return _roles_required
 
@@ -36,6 +41,11 @@ def permissions_required(permissions=[], failed_callback=None):
             ac_manager = current_app.ac_manager
             if ac_manager.allow_access(permissions=permissions):
                 return func(*args, **kwargs)
-            return failed_callback()
+
+            if ac_manager.default_error_handler:
+                return ac_manager.default_error_handler()
+
+            if failed_callback:
+                return failed_callback()
         return wrapper
     return _permissions_required

@@ -26,12 +26,14 @@ class ACManager(object):
 
     '''
     def __init__(self, permissions, app=None, roles_loader=None,
-                 permissions_loader=None):
+                 permissions_loader=None, default_error_handler=None):
 
         # TODO: support for cfg or other format permission
         self.ptree = self.build_ptree_from_obj(permissions)
         self.roles_loader = roles_loader
         self.permissions_loader = permissions_loader
+
+        self.default_error_handler = default_error_handler
 
         # Bounded to the app if provided
         if app is not None:
