@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='Flask-AC',
-    version='0.0.1',
+    version='0.0.2',
     url='',
     license='MIT',
     author='Jiaqi Guo',
