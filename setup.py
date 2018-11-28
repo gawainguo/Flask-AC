@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='Flask-AC',
-    version='0.0.2',
+    version='0.0.3',
     url='',
     license='MIT',
     author='Jiaqi Guo',
@@ -39,7 +39,7 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
