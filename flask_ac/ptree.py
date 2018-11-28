@@ -39,6 +39,19 @@ def get_nodes_in_path(root, permissions):
     return nodes
 
 
+def get_child_permissions(root):
+    return list(_traversal_ptree(root, []))
+
+
+def get_permissions_by_keys(root, permission_keys):
+    permissions = []
+    for node in _traversal_ptree(root, []):
+        if node.key in permission_keys:
+            permissions.append(node)
+
+    return permissions
+
+
 def _copy_path(path):
     return [node.key for node in path]
 

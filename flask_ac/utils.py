@@ -2,6 +2,14 @@ import functools
 from flask import current_app
 
 
+__all__ = [
+    'roles_required',
+    'permissions_required',
+    'get_child_permissions',
+    'get_all_child_permissions_for_user'
+]
+
+
 def roles_required(roles=[], failed_callback=None):
     """
     Roles control decorator.
@@ -49,3 +57,34 @@ def permissions_required(permissions=[], failed_callback=None):
                 return failed_callback()
         return wrapper
     return _permissions_required
+
+
+def get_child_permissions(permission_keys):
+    """
+    Get all valid child permissions by provided permission keys
+    with Deep First Search
+
+    return: list of Permission objects
+
+    """
+
+    ac_manager = current_app.ac_manager
+    permissions = ac_manager.get_permissions_by_keys(permission_keys)
+    valid = []
+    for permission in permissions:
+        valid += list(ac_manager.get_child_permissions(permission))
+
+    return valid
+
+
+def get_all_child_permissions_for_user():
+    """
+    Get all valid child Permission objects for current user
+
+    return: list of Permission objects
+
+    """
+
+    ac_manager = current_app.ac_manager
+    permission_keys = ac_manager.get_user_permissions()
+    return get_child_permissions(permission_keys)

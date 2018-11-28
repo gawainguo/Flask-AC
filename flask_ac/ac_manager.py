@@ -81,6 +81,12 @@ class ACManager(object):
         return self._roles_loader()
 
     def get_user_permissions(self):
+        """
+        Get current user permissions keys
+
+        return: list of permision keys
+        """
+
         if self.permissions_loader:
             return self.permissions_loader()
         return self._permissions_loader()
@@ -120,3 +126,23 @@ class ACManager(object):
         '''
 
         return ptree.create_ptree_from_obj(obj)
+
+    def get_child_permissions(self, permission):
+        '''
+        Get all child permissions of provided permissions
+
+        return: Permission objects
+        '''
+
+        return ptree.get_child_permissions(permission)
+
+    def get_permissions_by_keys(self, permission_keys):
+        '''
+        Get Permission object by permission names
+
+        return: Permission object
+        '''
+
+        permissions = ptree.get_permissions_by_keys(
+            self.ptree, permission_keys)
+        return permissions
