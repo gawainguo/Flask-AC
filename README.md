@@ -1,5 +1,10 @@
 # Flask-AC
 
+[![Build Status](https://travis-ci.org/gawainguo/Flask-AC.svg?branch=master)](https://travis-ci.org/gawainguo/Flask-AC)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-129310551-2/index)](https://github.com/gawainguo/Flask-AC)
+
+
 Flask-AC is a light-weighted access control extension for Flask. It implement role based access control(rbac) by permissions tree data structure which modeling permissions in tree-like hierarchy.
 
 Flask-AC will not handling the storage of roles and permissions. Instead, by providing the loader for permissions and roles, you can customize how the data stored in database or context.
